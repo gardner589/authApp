@@ -1,4 +1,4 @@
-import {reduxForm, Field} from "redux-form";
+import {reduxForm} from "redux-form";
 import React, { Component } from 'react';
 import {
    StyleSheet,
@@ -13,6 +13,7 @@ import {
 var Login = React.createClass({
    onSignIn: function (){
       var {email,password} = this.props.fields;
+      console.log(this.props.fields);
       console.log(email.value, password.value)
    },
 
