@@ -3,6 +3,8 @@ import axios from "axios";
 import {SIGNIN_URL, SIGNUP_URL} from "../api/";
 import {addAlert} from "./alertsActions";
 
+
+
  exports.loginUser = (email, password) =>{
     return function(dispatch){
       return axios.post(SIGNIN_URL, {email, password}).then((response)=>{
