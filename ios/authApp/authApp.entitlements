@@ -5,7 +5,6 @@
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)org.reactjs.native.example.authApp</string>
-		<string>$(AppIdentifierPrefix)org.reactjs.native.example.RNKeychainIOS10Repro</string>
 	</array>
 </dict>
 </plist>

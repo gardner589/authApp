@@ -7,19 +7,43 @@ import {
    TextInput,
    TouchableOpacity,
 } from 'react-native';
+import LoadingIndicator from './modals/loadingIndicator';
 
 import {loginUser, signupUser,addAlert} from "../actions"
 
 var Login = React.createClass({
+   getInitialState: function(){
+      return {
+         loading:false,
+         animating:false
+      }
+   },
    onSignIn: function (){
       var {dispatch, fields:{email,password}} = this.props;
-      dispatch(loginUser(email.value,password.value))
-      console.log(email.value, password.value)
+      this.setState({
+         loading:true,
+         animating:true
+      });
+      dispatch(loginUser(email.value,password.value)).then(()=>{
+         this.setState({
+            loading:false,
+            animating:false,
+         });
+      })
+
    },
    onSignUp: function (){
       var {dispatch, fields:{email,password}} = this.props;
-      dispatch(signupUser(email.value,password.value))
-      console.log(email.value, password.value)
+      this.setState({
+         loading:true,
+         animating:true
+      });
+      dispatch(signupUser(email.value,password.value)).then(()=>{
+         this.setState({
+            loading:false,
+            animating:false
+         });
+      });
    },
 
    render() {
@@ -34,52 +58,60 @@ var Login = React.createClass({
             )
          }
       }
-      return (
-         <View style={styles.container}>
 
-            <View style ={styles.titleContainer}>
-               <Text style={styles.title}>
-                  To-Do
-               </Text>
-            </View>
+      if (this.state.loading) {
+         return(
+               <LoadingIndicator />
+         )
 
-            <View style= {styles.field}>
-               <TextInput
-                  {...email}
-                  style={styles.textInput}
-                  placeholder="Email"
-               />
-               <View>
-                  {renderError(email)}
+      } else {
+         return (
+            <View style={styles.container}>
+
+               <View style ={styles.titleContainer}>
+                  <Text style={styles.title}>
+                     To-Do
+                  </Text>
+               </View>
+
+               <View style= {styles.field}>
+                  <TextInput
+                     {...email}
+                     style={styles.textInput}
+                     placeholder="Email"
+                  />
+                  <View>
+                     {renderError(email)}
+                  </View>
+               </View>
+
+               <View style= {styles.field}>
+                  <TextInput
+                     {...password}
+                     style={styles.textInput}
+                     placeholder="Password"
+                  />
+                  <View>
+                     {renderError(password)}
+                  </View>
+               </View>
+
+               <View style= {styles.buttonContainer}>
+                  <TouchableOpacity onPress={this.onSignIn}>
+                     <Text style={styles.button} >
+                        SIGN IN
+                     </Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={this.onSignUp}>
+                     <Text style={styles.button}>
+                        SIGN UP
+                     </Text>
+                  </TouchableOpacity>
                </View>
             </View>
-
-            <View style= {styles.field}>
-               <TextInput
-                  {...password}
-                  style={styles.textInput}
-                  placeholder="Password"
-               />
-               <View>
-                  {renderError(password)}
-               </View>
-            </View>
-
-            <View style= {styles.buttonContainer}>
-               <TouchableOpacity onPress={this.onSignIn}>
-                  <Text style={styles.button} >
-                     SIGN IN
-                  </Text>
-               </TouchableOpacity>
-
-               <TouchableOpacity onPress={this.onSignUp}>
-                  <Text style={styles.button}>
-                     SIGN UP
-                  </Text>
-               </TouchableOpacity>
-            </View>
-         </View>
-      );
+         );
+      }
    }
 });
 
