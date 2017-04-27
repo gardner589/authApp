@@ -8,8 +8,10 @@ import {
 export default LoadingIndicator = (props) => {
    return (
       <View style = {styles.container}>
-         <ActivityIndicator animating = {props.animating}
-           style = {styles.activityIndicator} size = "large"
+         <ActivityIndicator
+            animating = {props.animating}
+            style = {styles.activityIndicator}
+            size = "large"
          />
       </View>
    );

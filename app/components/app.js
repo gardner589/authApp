@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import {
    StyleSheet,
    Text,
-   View
+   View,
+   StatusBar
 } from 'react-native';
 
 // import {} from "../actions"
@@ -32,8 +33,9 @@ var App = React.createClass({
       }
       return(
          <View style={{flex:1}}>
-         {renderMainView()}
-         <AlertContainer />
+         <StatusBar barStyle="light-content" />
+            {renderMainView()}
+            <AlertContainer />
          </View>
       )
    }

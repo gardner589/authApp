@@ -59,7 +59,7 @@ var Login = React.createClass({
          }
       }
 
-      if (this.state.loading) {
+      if (this.state.animating) {
          return(
                <LoadingIndicator />
          )
