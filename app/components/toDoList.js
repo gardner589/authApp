@@ -7,10 +7,34 @@ import {
    View,
    TouchableOpacity,
    ScrollView,
-   RefreshControl
+   RefreshControl,
+
 } from 'react-native';
 
 import {connect} from 'react-redux';
+
+import NewTodo from "./newTodo";
+import {unauthUser,getTodos} from "../actions"
+
+
+var TodoItem = React.createClass({
+   render() {
+      return (
+         <View style={styles.toDoContainer}>
+            <TouchableOpacity>
+               <Text>
+                  {this.props.text}
+               </Text>
+            </TouchableOpacity>
+         </View>
+      );
+   }
+});
+
+
+
+
+
 
 var ToDoList = React.createClass({
    getInitialState(){
@@ -20,17 +44,31 @@ var ToDoList = React.createClass({
    },
 
    onLogout(){
-
+      this.props.dispatch(unauthUser)
    },
    addNewTodo(){
-
+      this.props.navigator.push({
+         component:NewTodo,
+         title:"New Todo",
+         navigationBarHidden: true
+      })
    },
    onRefresh(){
+      this.setState({refreshin:true});
+      this.props.dispatch(getTodos).then(()=>{
+         this.setState({refreshing:false})
+      })
 
    },
 
    render() {
-      console.log(this.props.todos);
+      var renderTodos = () =>{
+         return this.props.todos.map((todo)=>{
+            return (
+               <TodoItem key={todo._id}  text={todo.text} id={todo._id} />
+            )
+         });
+      };
       return (
          <View style={styles.container}>
             <View style={styles.topBar}>
@@ -51,22 +89,21 @@ var ToDoList = React.createClass({
                      color="white"
                   />
                </TouchableOpacity>
-               <ScrollView
-                  refreshControl={
-                     <RefreshControl
-                        refreshing={this.state.refreshing}
-                        onRefresh={this.onRefresh}
-                     />
+
+            </View>
+            <ScrollView
+               refreshControl={
+                  <RefreshControl
+                     refreshing={this.state.refreshing}
+                     onRefresh={this.onRefresh} />
                }
                contentContainerStyle ={styles.scrollViewContainer}
                automaticallyAdjustContentInsets={false}>
-
+               {renderTodos(), console.log(renderTodos())}
             </ScrollView>
-
          </View>
-      </View>
-   );
-}
+      );
+   },
 });
 
 const styles = StyleSheet.create({
@@ -89,7 +126,14 @@ const styles = StyleSheet.create({
       color:"white",
       fontSize:20,
 
-   }
+   },
+   toDoContainer: {
+      padding: 16,
+      borderTopWidth: 1,
+      borderBottomWidth: 1 ,
+      marginTop: -1,
+      borderColor:"#ccc"
+   },
 
 });
 

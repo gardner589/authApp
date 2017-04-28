@@ -1,9 +1,5 @@
 import uuid from "uuid";
-
-var defaultState = [{
-   _id:"297193321789231",
-   text:"Mow Lawn"
-}]
+var defaultState = []
 
 module.exports = (state=defaultState, action) => {
    switch(action.type) {
@@ -14,6 +10,15 @@ module.exports = (state=defaultState, action) => {
          ]
 
          break;
+
+      case "SET_TODOS":
+         return
+            action.todos
+         
+
+
+         break;
+
       case "REMOVE_TODO":
 
          return state.filter((alert)=>{
