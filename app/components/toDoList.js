@@ -14,25 +14,8 @@ import {
 import {connect} from 'react-redux';
 
 import NewTodo from "./newTodo";
+import TodoItem from "./todoItem";
 import {unauthUser,getTodos} from "../actions"
-
-
-var TodoItem = React.createClass({
-   render() {
-      return (
-         <View style={styles.toDoContainer}>
-            <TouchableOpacity>
-               <Text>
-                  {this.props.text}
-               </Text>
-            </TouchableOpacity>
-         </View>
-      );
-   }
-});
-
-
-
 
 
 
@@ -65,7 +48,7 @@ var ToDoList = React.createClass({
       var renderTodos = () =>{
          return this.props.todos.map((todo)=>{
             return (
-               <TodoItem key={todo._id}  text={todo.text} id={todo._id} />
+               <TodoItem key={todo._id} text={todo.text} id={todo._id}/>
             )
          });
       };
@@ -126,13 +109,6 @@ const styles = StyleSheet.create({
       color:"white",
       fontSize:20,
 
-   },
-   toDoContainer: {
-      padding: 16,
-      borderTopWidth: 1,
-      borderBottomWidth: 1 ,
-      marginTop: -1,
-      borderColor:"#ccc"
    },
 
 });

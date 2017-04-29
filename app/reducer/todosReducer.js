@@ -7,16 +7,13 @@ module.exports = (state=defaultState, action) => {
          return [
             ...state,
             action.newTodo
-         ]
+         ];
 
          break;
 
       case "SET_TODOS":
          return
             action.todos
-         
-
-
          break;
 
       case "REMOVE_TODO":
