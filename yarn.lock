@@ -3269,9 +3269,9 @@ react-native-lightbox@shoutem/react-native-lightbox#4e58b9b1aca166142d69b161ff51
     react-native-view-transformer ldn0x7dc/react-native-view-transformer#f7e028b6566022deac4e523052e74c2c63a4af7e
     react-timer-mixin "^0.13.3"
 
-react-native-linear-gradient@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.0.0.tgz#7442c00e1fcd9fca329119dcbaf744d12bcd1b5a"
+react-native-linear-gradient@^2.0.0, react-native-linear-gradient@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.4.tgz#64944a39290eefbede18dfd7e9551f1ef61e3de7"
 
 react-native-photo-view@^1.2.0:
   version "1.2.0"
