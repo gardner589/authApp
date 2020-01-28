@@ -10,7 +10,7 @@
     "@shoutem/ui": "^1.0.1",
     "axios": "^0.18.1",
     "react": "16.0.0-alpha.6",
-    "react-addons-update": "^15.5.2",
+    "react-addons-update": "^15.6.2",
     "react-native": "0.43.3",
     "react-native-keychain": "^4.0.1",
     "react-native-linear-gradient": "^2.4.4",
