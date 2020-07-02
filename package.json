@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@shoutem/ui": "^1.0.1",
+    "@shoutem/ui": "^2.0.12",
     "axios": "^0.18.1",
     "react": "16.0.0-alpha.6",
     "react-addons-update": "^15.5.2",
